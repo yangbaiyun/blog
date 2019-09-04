@@ -22,9 +22,24 @@ spring:
   rabbitmq:
     host: 114.67.80.70
     port: 5672
-    username: john
-    password: 123789
+    username: guest
+    password: guest
     publisher-confirms: true
+    publisher-returns: true
+    template:
+       #开启mandatory: true, basic.return方法将消息返还给生产者
+       mandatory: true
+    listener:
+       simple:
+           #手动ACK
+           acknowledge-mode: manual
+           default-requeue-rejected: false
+           concurrency: 1
+           max-concurrency: 1
+           prefetch: 1
+           retry:
+              enabled: true
+
     virtual-host: /
 
 foo: foo version 1
