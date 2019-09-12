@@ -1,0 +1,6 @@
+version: '2'
+servcie:
+  eureka-service:
+    image: blog/eureka-server
+    ports:
+      - "8761:8761"
